@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tariff Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Inline overrides to mirror style.css updates */
+    h1.main-header {
+      color: #0A399A;
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .link a {
+      color: #0A399A;
+      font-size: 16px;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 5px;
+      text-align: center;
+    }
+    .inputs label {
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 600px;
+      margin: 10px auto;
+      font-weight: bold;
+    }
+    h3.pl-inputs {
+      font-size: 18px;
+      text-align: left;
+      max-width: 600px;
+      margin: 20px auto 10px auto;
+    }
+    p .loss-label {
+      font-size: 18px;
+    }
+    h3.pl-before-after {
+      font-size: 22px;
+    }
+    .results table th.before,
+    .results table th.after {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h1 class="main-header">Tariff Calculator</h1>
+    <div class="link">
+      <a href="https://tradecomplianceresourcehub.com/2025/05/16/trump-2-0-tariff-tracker/" target="_blank">
+        Click here to look up Current Tariff Rate by Country
+      </a>
+    </div>
+
+    <div class="inputs">
+      <h2>Inputs</h2>
+      <label>Tariff Rate %: <input type="text" id="tariffRate" onblur="formatPercentage(this)"></label>
+      <label># of units sold last 12 months: <input type="text" id="unitsSold" onblur="formatNumber(this)"></label>
+
+      <h3 class="pl-inputs">Profit and Loss Inputs:</h3>
+      <label>Total Sales: <input type="text" id="totalSales" onblur="formatCurrency(this)"></label>
+      <label>COGS subject to Tariff ($): <input type="text" id="tariffCOGS" onblur="formatCurrency(this)"></label>
+      <small class="description">Custom Value that usually relates to product cost, insurance and international freight expenses</small>
+
+      <label>Other COGS: <input type="text" id="otherCOGS" onblur="formatCurrency(this)"></label>
+      <small class="description">All other COGS not related to Custom Value (i.e. Packaging, shipping from port to warehouse, handling fees etc.)</small>
+
+      <label>Total Operational Expense: <input type="text" id="operatingExpense" onblur="formatCurrency(this)"></label>
+    </div>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div class="results">
+      <h2>RESULTS</h2>
+      <p><strong class="loss-label">Total Loss due to Tariff Impact:</strong> <span id="tariffCost"></span></p>
+
+      <h3 class="pl-before-after">Profit and Loss Before and After Tariffs:</h3>
+      <table>
+        <thead>
+          <tr><th></th><th class="before">Before</th><th class="after">After</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Total Sales</strong></td><td id="salesBefore"></td><td id="salesAfter"></td></tr>
+          <tr><td>COGS subject to Tariff</td><td id="tariffCOGSBefore"></td><td id="tariffCOGSAfter"></td></tr>
+          <tr><td>Other COGS</td><td id="otherCOGSBefore"></td><td id="otherCOGSAfter"></td></tr>
+          <tr><td>Tariff Costs</td><td>$0</td><td id="tariffCostVal"></td></tr>
+          <tr class="highlight"><td><strong>Total COGS</strong></td><td id="totalCOGSBefore"></td><td id="totalCOGSAfter"></td></tr>
+          <tr><td>Gross Profit</td><td id="grossProfitBefore"></td><td id="grossProfitAfter"></td></tr>
+          <tr><td>Operational Expense</td><td id="opExpBefore"></td><td id="opExpAfter"></td></tr>
+          <tr class="net-income"><td><strong>Net Income</strong></td><td id="netIncomeBefore"></td><td id="netIncomeAfter"></td></tr>
+        </tbody>
+      </table>
+
+      <div class="strategies">
+        <h3>Strategies to Compensate for Tariff</h3>
+        <div class="strategy orange">
+          <strong>Strategy 1</strong><br />
+          Increase Sales Price per Unit by: <span id="increasePrice"></span>
+        </div>
+        <div class="or">OR</div>
+        <div class="strategy green">
+          <strong>Strategy 2</strong><br />
+          Decrease Operational Expense by: <span id="decreaseExpense"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
