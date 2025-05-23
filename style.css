@@ -13,44 +13,7 @@ body {
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* Header */
-h1.main-header {
-  /* defined inline in index.html */
-}
-
-/* Link styling */
-.link a {
-  /* defined inline in index.html */
-}
-
-/* Input labels */
-.inputs label {
-  /* defined inline in index.html */
-}
-
-/* Profit and Loss Inputs heading */
-h3.pl-inputs {
-  /* defined inline in index.html */
-}
-
-/* Loss label */
-.loss-label {
-  /* defined inline in index.html */
-}
-
-/* Before/After heading */
-h3.pl-before-after {
-  /* defined inline in index.html */
-}
-
-/* Results table Before and After font-size */
-.results table th.before,
-.results table th.after {
-  /* defined inline in index.html */
-}
-
 /* Existing styles retained below */
-
 h1 {
   text-align: center;
 }
@@ -93,17 +56,6 @@ small.description {
   font-weight: normal;
   font-size: 13px;
   color: #333;
-}
-
-.inputs h3 {
-  /* replaced by .pl-inputs */
-}
-
-.inputs h2 {
-  background-color: #b2e0ff;
-  padding: 10px;
-  max-width: 600px;
-  margin: 0 auto;
 }
 
 .results table {
