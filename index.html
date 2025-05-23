@@ -30,19 +30,29 @@
       margin: 10px auto;
       font-weight: bold;
     }
+    /* Profit and Loss Inputs heading updated to 28px italic and color */
     h3.pl-inputs {
-      font-size: 18px;
+      font-size: 28px;
+      font-style: italic;
+      color: #0A399A;
       text-align: left;
       max-width: 600px;
       margin: 20px auto 10px auto;
     }
-    /* Align loss label under RESULTS */
+    /* Align and style loss label/value under RESULTS */
     .results .loss-label {
       font-size: 21px;
       font-weight: bold;
-      display: block;
-      margin: 0;
+      display: inline-block;
+      margin-right: 10px;
       text-align: left;
+    }
+    .results .loss-value {
+      font-size: 21px;
+      background-color: yellow;
+      padding: 2px 6px;
+      display: inline-block;
+      vertical-align: middle;
     }
     /* Align P&L heading under RESULTS */
     h3.pl-before-after {
@@ -93,7 +103,10 @@
 
     <div class="results">
       <h2>RESULTS</h2>
-      <p><strong class="loss-label">Total Loss due to Tariff Impact:</strong> <span id="tariffCost"></span></p>
+      <p>
+        <strong class="loss-label">Total Loss due to Tariff Impact:</strong>
+        <span class="loss-value" id="tariffCost"></span>
+      </p>
 
       <h3 class="pl-before-after">Profit and Loss Before and After Tariffs:</h3>
       <table>
